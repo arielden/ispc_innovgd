@@ -104,7 +104,7 @@ def iniciar_sesion():
 
     if nombre_usuario in usuarios:
         if usuarios[nombre_usuario]["clave"] == clave:
-            print(f"¡Bienvenido/a, {usuarios[nombre_usuario]['nombre']}!")
+            print(f"\n¡Bienvenido/a, {usuarios[nombre_usuario]['nombre']}!")
             
             # acá guardamos el ingreso exitoso en un archivo
             fecha_ingreso = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -120,8 +120,8 @@ def iniciar_sesion():
             # acá ingresamos porque el usuario ingresó una contraseña distinta
             intentos_fallidos[nombre_usuario] = intentos_fallidos.get(nombre_usuario, 0) + 1
             if intentos_fallidos[nombre_usuario] < 4:
-                print(f"Contraseña incorrecta. Intento {intentos_fallidos[nombre_usuario]} de 4.")
-                print(f"ATENCIÓN: el usuario {nombre_usuario} quedará bloqueado al 4 intento.")
+                print(f"\nContraseña incorrecta. Intento {intentos_fallidos[nombre_usuario]} de 4.")
+                print(f"ATENCIÓN: el usuario {nombre_usuario} quedará bloqueado al 4 intento.\n")
                 
                 # guardamos el intento fallido en un log
                 with open("log.txt", "a") as log:
@@ -133,7 +133,7 @@ def iniciar_sesion():
                     fecha_actual = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     log.write(f"{fecha_actual} - Usuario {nombre_usuario} bloqueado tras 4 intentos fallidos.\n")
     else:
-        print("El nombre de usuario no existe.")
+        print("\nEl nombre de usuario no existe.")
 
 def generar_captcha():
     """
@@ -141,8 +141,8 @@ def generar_captcha():
     """
     operadores = ['+', '-', '*', '/']
     operador = random.choice(operadores)
-    num1 = round(random.uniform(1, 100), 2)
-    num2 = round(random.uniform(1, 100), 2)
+    num1 = round(random.uniform(1, 10), 2)
+    num2 = round(random.uniform(1, 10), 2)
 
     if operador == '+':
         resultado = aritmetica.sumar(num1, num2)
@@ -164,7 +164,7 @@ def generar_captcha():
 
 def solicitar_captcha():
     """
-    Solicita al usuario que resuelva un captcha, luego valida la respuesta.
+    Solicita al usuario que resuelva un captcha y a continuación valida la respuesta.
     """
     while True:
         operacion, resultado_esperado = generar_captcha()
@@ -199,7 +199,7 @@ while True:
     print("2. Iniciar sesión")
     print("3. Olvidé mi contraseña")
     print("4. Salir")
-    opcion = input("Ingrese una opción: ")
+    opcion = input("\nIngrese una opción: ")
 
     if opcion == '1':
         registrar_usuario()
@@ -209,7 +209,7 @@ while True:
         recuperar_pass()
         break
     elif opcion == '4':
-        print("Saliendo del Sistema Único de Registro (SUR). Chau!")
+        print("\nSaliendo del Sistema Único de Registro (SUR)...\n")
         break
     else:
         print("Opción inválida.")

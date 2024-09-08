@@ -1,1 +1,2 @@
 Usuario: arielden, DNI: 29583416, Nombre: Ariel Denaro, Correo: ariel@gmail.com, Fecha de Nacimiento: 1982-08-19 - Creado correctamente.
+Usuario: peterher, DNI: 29800400, Nombre: Pedro Hernandez, Correo: peter@hotmail.com, Fecha de Nacimiento: 1983-08-09 - Creado correctamente.

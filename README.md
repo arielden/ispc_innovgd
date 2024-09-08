@@ -62,6 +62,7 @@ ispc_innovgd
 - aritmetica.py: Módulo con operaciones aritméticas básicas
 - registro_usuario.py: Código principal para lanzar la aplicación de registro, también contiene módulos de validación de ingreso y captcha
 - test_aritmetica.py: Módulo de test
-- ingresos.txt --> Archivo .txt que registra los ingresos
-- log.txt --> Archivo .txt que registra ingresos fallidos
-- usuariosCreados.txt --> Archivo .txt que registra la creación de usuarios.
+- ingresos.txt: Archivo .txt que registra los ingresos
+- log.txt: Archivo .txt que registra ingresos fallidos
+- usuariosCreados.txt: Archivo .txt que registra la creación de usuarios.
+- Documento de proyecto.pdf: Contiene una breve descripción del proyecto, las metodologías a utilizar como así también un detalle de las tablas y relaciones que necesitaremos a lo largo del desarrollo.

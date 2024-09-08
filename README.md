@@ -44,20 +44,6 @@ Incluímos las siguientes funcionalidades:
 
 ## Estructura del repositorio
 
-´´´
-ispc_innovgd
-    ├── evidencia1/
-    │   ├── app/
-    │   │   ├── aritmetica.py
-    │   │   ├── registro_usuario.py
-    │   │   ├── test_aritmetica.py
-    │   │   ├── logs.txt
-    │   │   ├── ingresos.txt
-    │   │   ├── usuariosCreados.txt
-    │   ├── Documento de proyecto.pdf
-    ├── README.md
-´´´
-
 ```
 ispc_innovgd
     ├── evidencia1/

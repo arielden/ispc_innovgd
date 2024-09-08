@@ -58,7 +58,7 @@ ispc_innovgd
     ├── README.md
 ```
 
-### Que es cada cosa?
+### Qué es cada cosa?
 - aritmetica.py: Módulo con operaciones aritméticas básicas
 - registro_usuario.py: Código principal para lanzar la aplicación de registro, también contiene módulos de validación de ingreso y captcha
 - test_aritmetica.py: Módulo de test

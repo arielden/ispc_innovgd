@@ -1,6 +1,6 @@
 # PlayHouse
 
-### Integrantes:
+## Integrantes:
 - **DENARO, ARIEL**
     - _GitHub_: [arielden](https://github.com/arielden)
     - _Mail_: arieldenaro@gmail.com
@@ -9,6 +9,13 @@
     - _GitHub_: [PabloBajar](https://github.com/PabloBajar)
     - _Mail_: pabloalejabajar@gmail.com
     - _DNI_: 33599313
+
+## Proyecto Integrador - Evidencias
+- **Módulo:**
+    - Innovación en Gestión de Datos
+- **Asignaturas:**
+    - Programación I
+    - Base de Datos II
 
 **PlayHouse** es un sistema de compra de juegos online, permite administrar usuarios con diferentes membresías, los descuentos aplicados en base a estas membresías y obtener métricas del historial de compras de cada usuario o de un grupo determinado de usuarios.
 
@@ -35,16 +42,9 @@ Incluímos las siguientes funcionalidades:
 
 ---
 
-# Proyecto Integrador - Evidencias
-- **Módulo:**
-    - Innovación en Gestión de Datos
-- **Asignaturas:**
-    - Programación I
-    - Base de Datos II
+## Estructura del repositorio
 
-
-### Estructura del repositorio
-
+´´´
 ispc_innovgd
     ├── evidencia1/
     │   ├── app/
@@ -56,8 +56,23 @@ ispc_innovgd
     │   │   ├── usuariosCreados.txt
     │   ├── Documento de proyecto.pdf
     ├── README.md
+´´´
 
-#### Que es cada cosa?
+```
+ispc_innovgd
+    ├── evidencia1/
+    │   ├── app/
+    │   │   ├── aritmetica.py
+    │   │   ├── registro_usuario.py
+    │   │   ├── test_aritmetica.py
+    │   │   ├── logs.txt
+    │   │   ├── ingresos.txt
+    │   │   ├── usuariosCreados.txt
+    │   ├── Documento de proyecto.pdf
+    ├── README.md
+```
+
+### Que es cada cosa?
 - aritmetica.py: Módulo con operaciones aritméticas básicas
 - registro_usuario.py: Código principal para lanzar la aplicación de registro, también contiene módulos de validación de ingreso y captcha
 - test_aritmetica.py: Módulo de test

@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 class Acceso:
-    """Clase que representa los accesos de los usuarios al sistema."""
+    """En esta clase representamos los accesos del usuario al sistema"""
     def __init__(self, id, fecha_ingreso, usuario_logueado):
         self.id = id
         self.fecha_ingreso = fecha_ingreso
@@ -13,29 +13,29 @@ class Acceso:
         return f"ID Acceso: {self.id}, Usuario: {self.usuario_logueado}, Fecha de Ingreso: {self.fecha_ingreso}"
 
 def guardar_acceso(accesos, archivo="accesos.ispc"):
-    """Guardar la lista de accesos en un archivo binario."""
+    """Acá se guarda la lista de accesos en un archivo binario."""
     with open(archivo, "wb") as file:
         pickle.dump(accesos, file)
 
 def cargar_accesos(archivo="accesos.ispc"):
-    """Cargar la lista de accesos desde un archivo binario."""
+    """Cargamos la lista de accesos desde un archivo binario."""
     if os.path.exists(archivo):
         with open(archivo, "rb") as file:
             return pickle.load(file)
-    return []  # Lista vacía si no existe el archivo
+    return []  # Si no tenemos el archivo le ponemos una lista vacía.
 
 def registrar_intento_fallido(usuario, clave, archivo="logs.txt"):
-    """Registrar un intento fallido de acceso en un archivo de texto."""
+    """Registramos un intento fallido de acceso en un archivo de texto."""
     with open(archivo, "a") as file:
         file.write(f"Intento fallido - Fecha: {datetime.now()}, Usuario: {usuario}, Clave: {clave}\n")
 
 def ingresar_sistema(usuarios, accesos):
-    """Función para gestionar el ingreso al sistema con validación de usuario y contraseña."""
+    """Función para ingreso al sistema con validación de usuario y contraseña."""
     username = input("Ingrese su nombre de usuario: ")
     password = input("Ingrese su contraseña: ")
 
     if username in usuarios and usuarios[username].password == password:
-        print(f"¡Bienvenido {username}!")
+        print(f"Bienvenido a PlayHouse {username}!")
         nuevo_acceso = Acceso(len(accesos) + 1, datetime.now(), username)
         accesos.append(nuevo_acceso)
         guardar_acceso(accesos)

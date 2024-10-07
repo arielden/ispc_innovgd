@@ -31,3 +31,9 @@ SELECT usuario.nombre, usuario.apellido, membresia.tipo FROM usuario
 	INNER JOIN membresia
     ON usuario.Membresia_idMembresia = membresia.idMembresia
     WHERE membresia.tipo = "plus";
+-- Mostrar el nombre y apellido de cada usuario para cada compra y la fecha de la misma
+SELECT compra.idCompra, usuario.nombre, usuario.apellido, compra.fecha FROM compra
+	INNER JOIN usuario
+    ON compra.Usuario_idUsuario = Usuario.idUsuario;
+
+

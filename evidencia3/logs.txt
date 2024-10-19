@@ -1,0 +1,5 @@
+Intento fallido - Fecha: 2024-10-05 12:51:03.302993, Usuario: arieldenaro, Clave: Pass4444
+Intento fallido - Fecha: 2024-10-05 12:52:39.318327, Usuario: arieldenaro, Clave: Pass1234!
+Intento fallido - Fecha: 2024-10-05 13:59:57.630716, Usuario: peterher, Clave: Pass0000
+Intento fallido - Fecha: 2024-10-05 14:00:25.021786, Usuario: 7, Clave: asd
+Intento fallido - Fecha: 2024-10-17 23:29:00.582870, Usuario: pablobajar, Clave: Pass12

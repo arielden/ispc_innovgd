@@ -219,45 +219,36 @@ def submenu_gestion_base_datos():
     """Submenú para ejecutar consultas SQL en la base de datos."""
     while True:
         print("\n--- Gestión de Base de Datos ---")
-        print("1. Mostrar todos los datos de usuarios")
-        print("2. Mostrar ID, nombre y apellido de usuarios")
-        print("3. Mostrar juegos de acción y shooter")
-        print("4. Mostrar usuarios con ID entre 9 y 12")
-        print("5. Mostrar primeros 3 usuarios con membresía estándar")
-        print("6. Crear un nuevo usuario (Crea el usuario Batistuta con membresía plus)")
-        print("7. Modificar suscripción del último usuario agregado (modifica la memb. a standard)")
-        print("8. Eliminar el último usuario agregado")
-        print("9. Mostrar nombre, apellido y tipo de suscripción")
-        print("10. Mostrar usuarios con membresía Plus")
-        print("11. Mostrar compras por usuario y fecha")
-        print("12. Volver al menú principal")
+        print("1. Mostrar columnas específicas de usuarios")
+        print("2. Mostrar juegos de acción y shooter")
+        print("3. Mostrar usuarios con ID entre 9 y 12")
+        print("4. Mostrar primeros 3 usuarios con membresía estándar")
+        print("5. Crear un nuevo usuario")
+        print("6. Modificar suscripción del último usuario agregado")
+        print("7. Eliminar el último usuario agregado")
+        print("8. Mostrar nombre, apellido y tipo de suscripción de usuarios")
+        print("9. Volver al menú principal")
 
         opcion = input("Seleccione una opción: ")
 
         try:
             if opcion == "1":
-                mostrar_todos_los_usuarios()
+                mostrar_usuarios_columnas_especificas()
             elif opcion == "2":
-                mostrar_id_nombre_apellido()
-            elif opcion == "3":
                 mostrar_juegos_accion_shooter()
-            elif opcion == "4":
+            elif opcion == "3":
                 mostrar_usuarios_id_rango()
-            elif opcion == "5":
+            elif opcion == "4":
                 mostrar_usuarios_membresia_estandar()
-            elif opcion == "6":
+            elif opcion == "5":
                 crear_nuevo_usuario()
-            elif opcion == "7":
+            elif opcion == "6":
                 modificar_suscripcion_ultimo_usuario()
-            elif opcion == "8":
+            elif opcion == "7":
                 eliminar_ultimo_usuario()
-            elif opcion == "9":
+            elif opcion == "8":
                 mostrar_nombre_apellido_tipo_suscripcion()
-            elif opcion == "10":
-                mostrar_usuarios_membresia_plus()
-            elif opcion == "11":
-                mostrar_compras_por_usuario()
-            elif opcion == "12":
+            elif opcion == "9":
                 break
             else:
                 print("Opción no válida. Intente nuevamente.")

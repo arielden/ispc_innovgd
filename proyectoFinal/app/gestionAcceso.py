@@ -9,52 +9,58 @@ class Acceso:
         self.__fecha_salida = fecha_salida
         self.__usuario_logueado = usuario_logueado
 
-    @property
-    def id(self):
+    # Métodos para acceder y modificar los atributos
+    def get_id(self):
         return self.__id
 
-    @property
-    def fecha_ingreso(self):
+    def set_id(self, value):
+        self.__id = value
+
+    def get_fecha_ingreso(self):
         return self.__fecha_ingreso
 
-    @property
-    def fecha_salida(self):
+    def set_fecha_ingreso(self, value):
+        self.__fecha_ingreso = value
+
+    def get_fecha_salida(self):
         return self.__fecha_salida
 
-    @fecha_salida.setter
-    def fecha_salida(self, value):
+    def set_fecha_salida(self, value):
         self.__fecha_salida = value
 
-    @property
-    def usuario_logueado(self):
+    def get_usuario_logueado(self):
         return self.__usuario_logueado
+
+    def set_usuario_logueado(self, value):
+        self.__usuario_logueado = value
 
     def __str__(self):
         ingreso = self.__fecha_ingreso.strftime('%Y-%m-%d %H:%M:%S') if self.__fecha_ingreso else "N/A"
         salida = self.__fecha_salida.strftime('%Y-%m-%d %H:%M:%S') if self.__fecha_salida else "N/A"
-        return f"Acceso ID: {self.id}, Usuario: {self.usuario_logueado}, Ingreso: {ingreso}, Salida: {salida}"
+        return f"Acceso ID: {self.get_id()}, Usuario: {self.get_usuario_logueado()}, Ingreso: {ingreso}, Salida: {salida}"
+
 
 def registrar_acceso_exitoso(usuario, archivo="accesos.ispc"):
     """Registra un acceso exitoso del usuario en el archivo binario accesos.ispc."""
     acceso = Acceso(
-        id=usuario.id,
+        id=usuario.get_id(),
         fecha_ingreso=datetime.now(),
         fecha_salida=None, 
-        usuario_logueado=usuario.username
+        usuario_logueado=usuario.get_username()
     )
 
     accesos = cargar_accesos(archivo)
     accesos.append(acceso)
     guardar_acceso(accesos, archivo)
-    print(f"Acceso exitoso registrado para el usuario {usuario.username}.")
+    print(f"Acceso exitoso registrado para el usuario {usuario.get_username()}.")
 
 def actualizar_fecha_salida(usuario, archivo="accesos.ispc"):
     """Actualiza la fecha de salida del último acceso del usuario."""
     accesos = cargar_accesos(archivo)
     
     for acceso in reversed(accesos):
-        if acceso.usuario_logueado == usuario.username and acceso.fecha_salida is None:
-            acceso.fecha_salida = datetime.now()
+        if acceso.get_usuario_logueado() == usuario.get_username() and acceso.get_fecha_salida() is None:
+            acceso.set_fecha_salida(datetime.now())
             break
         
     guardar_acceso(accesos, archivo)

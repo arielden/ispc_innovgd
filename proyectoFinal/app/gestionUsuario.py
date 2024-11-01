@@ -6,22 +6,34 @@ from main import Usuario
 
 def guardar_usuarios_ordenados_por_dni(usuarios, archivo="usuarios.ispc"):
     """Guarda el diccionario de usuarios en un archivo binario, ordenado por DNI."""
-    usuarios_ordenados = dict(sorted(usuarios.items(), key=lambda item: item[1].dni))
+    usuarios_ordenados = dict(sorted(usuarios.items(), key=lambda item: item[1].get_dni()))
     with open(archivo, "wb") as file:
         pickle.dump(usuarios_ordenados, file)
     print("Usuarios guardados en orden por DNI.")
 
 def cargar_usuarios(archivo="usuarios.ispc"):
-    """Carga el diccionario de usuarios desde un archivo binario."""
+    """Carga el diccionario de usuarios desde un archivo binario, en orden de DNI."""
     if os.path.exists(archivo):
         with open(archivo, "rb") as file:
-            return pickle.load(file)
-    return {} 
+            usuarios = pickle.load(file)
+            #convierto dni a int
+            for usuario in usuarios.values():
+                if isinstance(usuario.get_dni(), str):
+                    usuario.set_dni(int(usuario.get_dni()))
+            return usuarios
+    return {}
 
 def agregar_usuario(usuarios):
     """Agrega un nuevo usuario al sistema y guarda el archivo con el ordenamiento por DNI."""
     id = input("Ingrese ID: ")
-    dni = input("Ingrese el DNI: ")
+
+    # Validación numérica del DNI
+    while True:
+        dni = input("Ingrese el DNI: ")
+        if dni.isdigit():
+            dni = int(dni)  # Convertimos a entero para trabajar siempre con un número
+            break
+        print("DNI no válido. Debe ser un número. Intente nuevamente.")
 
     while True:
         username = input("Ingrese el nombre de usuario (6-12 caracteres, solo letras y números): ")
@@ -45,13 +57,21 @@ def agregar_usuario(usuarios):
     guardar_usuarios_ordenados_por_dni(usuarios) 
     print("¡Usuario agregado exitosamente!")
 
+
 def modificar_usuario(usuarios):
     """Modifica un usuario existente en el sistema."""
     username = input("Ingrese el nombre de usuario a modificar: ")
     if username in usuarios:
         print("Usuario encontrado. Ingrese los nuevos datos:")
         id = input("Ingrese el nuevo ID: ")
-        dni = input("Ingrese el nuevo DNI: ")
+
+        # Validación numérica del DNI
+        while True:
+            dni = input("Ingrese el nuevo DNI: ")
+            if dni.isdigit():
+                dni = int(dni)
+                break
+            print("DNI no válido. Debe ser un número. Intente nuevamente.")
         
         while True:
             password = input("Ingrese la nueva contraseña: ")
@@ -64,15 +84,16 @@ def modificar_usuario(usuarios):
                 break
 
         usuario = usuarios[username]
-        usuario.id = id
-        usuario.dni = dni
-        usuario.password = password
-        usuario.email = email
-        
-        guardar_usuarios_ordenados_por_dni(usuarios) 
+        usuario.set_id(id)
+        usuario.set_dni(dni)
+        usuario.set_password(password)
+        usuario.set_email(email)
+
+        guardar_usuarios_ordenados_por_dni(usuarios)  # Guardar en orden por DNI
         print("¡Usuario modificado exitosamente!")
     else:
         print("El usuario no existe.")
+
 
 def eliminar_usuario(usuarios):
     """Elimina un usuario dado su nombre de usuario o correo electrónico."""
@@ -80,24 +101,17 @@ def eliminar_usuario(usuarios):
     usuario_eliminar = None
 
     for username, usuario in usuarios.items():
-        if usuario.username == identificador or usuario.email == identificador:
+        if usuario.get_username() == identificador or usuario.get_email() == identificador:
             usuario_eliminar = username
             break
 
     if usuario_eliminar:
         del usuarios[usuario_eliminar]
-        guardar_usuarios_ordenados_por_dni(usuarios)
+        guardar_usuarios_ordenados_por_dni(usuarios)  # Guardar en orden por DNI
         print(f"Usuario {identificador} eliminado exitosamente.")
     else:
         print(f"No se encontró ningún usuario con ese username o email: {identificador}")
 
-def mostrar_todos_los_usuarios(usuarios):
-    """Muestra todos los usuarios registrados."""
-    if usuarios:
-        for usuario in usuarios.values():
-            print(usuario)
-    else:
-        print("No hay usuarios disponibles.")
 
 def mostrar_usuarios_ordenados(archivo="usuariosOrdenadosPorUsername.ispc"):
     """Muestra los usuarios ordenados desde el archivo especificado."""
@@ -108,3 +122,15 @@ def mostrar_usuarios_ordenados(archivo="usuariosOrdenadosPorUsername.ispc"):
                 print(usuario)
     else:
         print(f"El archivo {archivo} no existe.")
+
+def mostrar_todos_los_usuarios(archivo="usuarios.ispc"):
+    """Muestra todos los usuarios registrados, cargados desde el archivo en orden por DNI."""
+    if os.path.exists(archivo):
+        with open(archivo, "rb") as file:
+            usuarios = pickle.load(file)
+            for usuario in usuarios.values():
+                print(usuario)
+    else:
+        print("No hay usuarios disponibles.")
+
+

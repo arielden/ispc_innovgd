@@ -3,7 +3,7 @@ from gestionAcceso import *
 from gestionUsuario import *
 from gestionBaseDatos import *
 from registros_pluviales import *
-#from validacion import *
+from validacion import *
 
 class Usuario:
     def __init__(self, id, username, dni, password, email):
@@ -13,53 +13,44 @@ class Usuario:
         self.__password = password
         self.__email = email
 
-    @property
-    def id(self):
+    # Métodos para acceder y modificar los atributos
+    def get_id(self):
         return self.__id
 
-    @id.setter
-    def id(self, value):
+    def set_id(self, value):
         self.__id = value
 
-    @property
-    def username(self):
+    def get_username(self):
         return self.__username
 
-    @username.setter
-    def username(self, value):
+    def set_username(self, value):
         self.__username = value
 
-    @property
-    def dni(self):
+    def get_dni(self):
         return self.__dni
 
-    @dni.setter
-    def dni(self, value):
+    def set_dni(self, value):
         self.__dni = value
 
-    @property
-    def password(self):
+    def get_password(self):
         return self.__password
 
-    @password.setter
-    def password(self, value):
+    def set_password(self, value):
         self.__password = value
 
-    @property
-    def email(self):
+    def get_email(self):
         return self.__email
 
-    @email.setter
-    def email(self, value):
+    def set_email(self, value):
         self.__email = value
 
     def __str__(self):
-        return f"ID: {self.id}, Usuario: {self.username}, DNI: {self.dni}, Email: {self.email}"
+        return f"ID: {self.get_id()}, Usuario: {self.get_username()}, DNI: {self.get_dni()}, Email: {self.get_email()}"
 
 def menu_principal():
-    """Main menu function to navigate through the application."""
+    """menú principal"""
     usuarios = cargar_usuarios()
-    accesos = cargar_accesos()
+    #accesos = cargar_accesos()
     usuarios_ordenados = None 
 
     while True:
@@ -159,7 +150,7 @@ def menu_ordenar_buscar_usuarios(usuarios, usuarios_ordenados):
     elif orden_busqueda_opcion == "2":
         buscar_y_mostrar_usuarios(usuarios, usuarios_ordenados)
     elif orden_busqueda_opcion == "3":
-        mostrar_todos_los_usuarios(usuarios)
+        mostrar_todos_los_usuarios()
     elif orden_busqueda_opcion == "4":
         mostrar_usuarios_ordenados()
     elif orden_busqueda_opcion == "5":
@@ -168,7 +159,7 @@ def menu_ordenar_buscar_usuarios(usuarios, usuarios_ordenados):
         print("Opción no válida.")
 
 def ordenar_usuarios(usuarios):
-    """Sorts users by username and saves sorted users."""
+    """Ordena por username"""
     print("\n--- Ordenar los Usuarios ---")
     print("1. Burbuja")
     print("2. Selección")
@@ -179,7 +170,7 @@ def ordenar_usuarios(usuarios):
     ordenar_usuarios_por_username(usuarios, metodo=metodo)
 
 def buscar_y_mostrar_usuarios(usuarios, usuarios_ordenados):
-    """Provides options to search users by DNI, username, or email."""
+    """Busca por username, dnu o email"""
     print("\n--- Buscar y Mostrar los Usuarios ---")
     print("1. Búsqueda de Usuarios por DNI")
     print("2. Búsqueda de Usuarios por username")
@@ -203,13 +194,14 @@ def buscar_y_mostrar_usuarios(usuarios, usuarios_ordenados):
         print("Opción no válida en el submenú de búsqueda.")
 
 def iniciar_sesion_usuario(usuarios):
-    """Handles user login and registration of access attempts."""
+    """Maneja el login y resgistra los accesos"""
     username = input("Ingrese su nombre de usuario: ")
     password = input("Ingrese su contraseña: ")
 
-    if username in usuarios and usuarios[username].password == password:
+    usuario = usuarios.get(username)
+    if usuario and usuario.get_password() == password:
         print("Inicio de sesión exitoso.")
-        registrar_acceso_exitoso(usuarios[username])
+        registrar_acceso_exitoso(usuario)
         gestionar_base_datos()
     else:
         print("Credenciales incorrectas.")
@@ -255,9 +247,8 @@ def submenu_gestion_base_datos():
         except Exception as e:
             print(f"Error al ejecutar la consulta: {e}")
 
-
 def gestionar_base_datos():
-    """Dummy function for database management; to be expanded."""
+    """Para gestionar el acceso a la base de datos"""
     print("1. Ir a la Gestión de Base de datos")
     print("2. Volver al Menú principal")
     print("3. Salir de la aplicación")
@@ -281,8 +272,6 @@ def gestionar_base_datos():
         exit()
     else:
         print("Opción no válida.")
-
-
 
 if __name__ == "__main__":
     menu_principal()

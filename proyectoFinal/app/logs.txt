@@ -1,0 +1,12 @@
+Intento fallido - Fecha: 2024-10-05 12:51:03.302993, Usuario: arieldenaro, Clave: Pass4444
+Intento fallido - Fecha: 2024-10-05 12:52:39.318327, Usuario: arieldenaro, Clave: Pass1234!
+Intento fallido - Fecha: 2024-10-05 13:59:57.630716, Usuario: peterher, Clave: Pass0000
+Intento fallido - Fecha: 2024-10-05 14:00:25.021786, Usuario: 7, Clave: asd
+Intento fallido - Fecha: 2024-10-17 23:29:00.582870, Usuario: pablobajar, Clave: Pass12
+Intento fallido - Fecha: 2024-10-28 00:11:00.395234, Usuario: arielden, Clave: Pass1234$
+[2024-10-29 20:26:29] Intento fallido de login: Username: arieldenaro, Password: PAss0000$
+[2024-10-29 20:40:27] Intento fallido de login: Username: peterjoke, Password: PAss00
+[2024-10-29 22:36:37] Intento fallido de login: Username: arieldenaro, Password: Pass1234$
+[2024-10-29 22:36:48] Intento fallido de login: Username: arielden, Password: Pass1234$
+[2024-10-30 19:44:37] Intento fallido de login: Username: arieldenaro, Password: Pass1234$
+[2024-10-30 19:47:35] Intento fallido de login: Username: arielkoo, Password: PAss1234$

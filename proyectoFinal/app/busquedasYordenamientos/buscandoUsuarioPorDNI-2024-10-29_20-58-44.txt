@@ -1,0 +1,6 @@
+Búsqueda Binaria por DNI: buscando el DNI 12300456 en el archivo.
+Intento: DNI en posición 1 es 29583416.
+Buscar en subsecuencia de la izquierda.
+Intento: DNI en posición 0 es 12300450.
+Buscar en subsecuencia de la derecha.
+Usuario no encontrado.

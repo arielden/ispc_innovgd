@@ -2,61 +2,46 @@
 
 ## Descripción
 
-Para el desarrollo de esta evidencia tomamos como base los archivos utilizados en evidencia2, y los adaptamos a las consignas.
-Básicamente se incluyen dos grandes funcionalidades.
-1. **Gestión de usuarios** con operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y validación de datos de entrada.
-2. **Carga y análisis de registros pluviales** para un año, con generación de gráficos basados en los datos de lluvia.
+Este proyecto es una aplicación de consola para la gestión de usuarios, accesos y análisis de datos de lluvia. Implementa funcionalidades de CRUD para usuarios, registros de acceso, y un sistema de análisis de datos pluviales.
+Se incluye un sistema de búsqueda y ordenamiento de usuarios por DNI y username, y la posibilidad de realizar consultas SQL sobre la base de datos de ventas de juegos (generada como proyecto del primer cuatrimestre y optimizada en base a devoluciones de evidencias anteriores).
+1. **Gestión de Usuarios**:
+   - CRUD de usuarios almacenados en un archivo binario usuarios.ispc.
+   - Los usuarios se almacenan y muestran ordenados por DNI.
+   - Implementación de búsquedas y ordenamientos por DNI y username.
+2. **Registro de Accesos**
+   - Registra los accesos exitosos de usuarios en accesos.ispc.
+   - Guarda intentos fallidos en un archivo de texto logs.txt.
+3. **Análisis de Datos Pluviales**
+   - Carga o genera datos de lluvias diarias para un año específico en archivos CSV.
+   - Permite visualizar datos de lluvia y generar gráficos usando matplotlib.
 
-Tal y como se trabajó en la entrega anteior, se implementaron módulos separados para organizar mejor el código, lo que facilita la evolución y el mantenimiento del proyecto.
 
----
+## Estructura de Archivos y Carpetas
+```
+proyectoFinal/
+├── app/
+│   ├── __pycache__/            # archivos de caché
+│   ├── BaseDeDatos/            # onexiones y consultas SQL
+│   ├── busquedasYordenamientos/ # logs de búsqueda y ordenamiento
+│   ├── datosAnalizados/        # para almacenar resultados de análisis
+│   ├── accesos.ispc            # archivo binario de accesos registrados
+│   ├── gestionAcceso.py        # Gestión de accesos y logs de intentos fallidos
+│   ├── gestionBaseDatos.py     # Conexión y consultas con la base de datos SQL
+│   ├── gestionUsuario.py       # CRUD de usuarios y almacenamiento en `usuarios.ispc`
+│   ├── logs.txt                # Registros de intentos fallidos de inicio de sesión
+│   ├── main.py                 # Ejecuta el menú y funcionalidades de la aplicación
+│   ├── ordenamiento.py         # Código de funciones de ordenamiento y búsqueda de usuarios
+│   ├── README.md               # Readme general
+│   ├── registros_pluviales.py  # Código para análisis y visualización de datos pluviales
+│   ├── usuarios.ispc           # Archivo binario con los datos de usuarios
+│   ├── usuariosOrdenadosPorUsername.ispc # Archivo binario con usuarios ordenados por `username`
+│   └── validacion.py           # Funciones para validación de datos de usuarios (username, email, etc.)
+├── sql/
+│   └── ventadejuegos_structure_and_data.sql # Archivo SQL para consultas de base de datos de venta de juegos
+├── README_ProyectoFinal.md     # Documentación general del proyecto
 
-## Funcionalidades:
+```
 
-### 1. **Gestión de Usuarios**:
-   - Crear, modificar, eliminar y buscar usuarios.
-   - Validar el nombre de usuario, la contraseña y el correo electrónico.
-   - **Ordenar usuarios** por el nombre de usuario utilizando las técnicas de:
-     - **Ordenamiento Burbuja**: Implementado manualmente como técnica de ordenamiento.
-     - **Método `sort()` de Python**: Utilizando la opción nativa de Python.
-   - **Búsqueda de usuarios**: Se puede buscar un usuario utilizando:
-     - **Búsqueda secuencial**: Se utiliza si los usuarios no han sido ordenados previamente.
-     - **Búsqueda binaria**: Se activa automáticamente si los usuarios han sido ordenados previamente.
-   - Registrar accesos exitosos y fallidos al sistema en archivos binarios y logs.
-
-#### Detalle de Ordenamiento y Búsqueda:
-El sistema incluye opciones para ordenar a los usuarios según su nombre de usuario. Las opciones de ordenamiento disponibles son:
-
-1. **Ordenamiento Burbuja**: 
-   - Es una implementación manual del algoritmo de **burbuja**, donde scomparamos los nombres de usuario dos a la vez y se intercambian si están en el orden incorrecto.
-   - Este método es útil para ver el proceso de ordenamiento paso a paso, puede llegar a ser menos eficiente para grandes cantidades de usuarios.
-
-2. **Ordenamiento con `sort()` de Python**: 
-   - Utiliza el método nativo de Python `sort()` para ordenar los usuarios de manera más eficiente.
-   - El método `sort()` es preferible cuando el número de usuarios es mayor.
-
-3. **Búsqueda de Usuarios**:
-   - **Búsqueda secuencial**: Si los usuarios no han sido ordenados, se realiza una búsqueda secuencial revisando uno por uno.
-   - **Búsqueda binaria**: Si los usuarios han sido ordenados mediante alguna técnica de ordenamiento, se puede hacer una búsqueda binaria mucho más rápida.
-
-### 2. **Registros Pluviales**:
-   - Cargar o generar aleatoriamente registros de lluvia por año.
-   - Visualizar los registros de lluvia de un mes específico.
-   - Generar gráficos de barras, dispersión y circulares para analizar los datos anuales.
-
----
-
-## Archivos del Proyecto
-
-- **`main.py`**: Script principal que contiene el menú principal y el flujo de ejecución de la aplicación.
-- **`validacion.py`**: Módulo que maneja la validación de datos de usuario, como el correo, la contraseña y el nombre de usuario.
-- **`accesos.py`**: Módulo para la gestión de accesos y el registro de accesos exitosos y fallidos.
-- **`ordenamiento.py`**: Módulo que implementa las técnicas de ordenamiento (burbuja y `sort()`) y los métodos de búsqueda (secuencial y binaria).
-- **`registros_pluviales.py`**: Módulo que gestiona la carga de registros pluviales, su visualización y la generación de gráficos con `matplotlib`.
-- **`usuarios.ispc`**: Archivo binario que almacena los datos de los usuarios.
-- **`accesos.ispc`**: Archivo binario que guarda los accesos exitosos al sistema.
-- **`logs.txt`**: Archivo de texto que registra los intentos fallidos de acceso.
-- **`registroPluvial<año>.csv`**: Archivo CSV que almacena los registros pluviales generados o cargados para un año específico.
 
 ---
 
@@ -66,15 +51,16 @@ El sistema incluye opciones para ordenar a los usuarios según su nombre de usua
 - Librerías:
   - `pandas`
   - `matplotlib`
+  - `mysql-connector`
 
 Para instalar las dependencias necesarias, ejecutar:
 
 ```bash
-pip install pandas matplotlib
+pip install -r requirements.txt
 ```
 
 ## Instrucciones de Ejecución
 
 1. Clonar el repositorio.
-2. Asegurarse de tener los archivos `.py` en la misma carpeta. (evidencia3)
-3. Ejecutar el archivo principal `main.py` (dentrro de la carpeta evidencia3)
+2. Asegurarse de tener los archivos `.py` en la misma carpeta. (proyectoFinal/app)
+3. Ejecutar el archivo principal `main.py` (proyectoFinal/app)

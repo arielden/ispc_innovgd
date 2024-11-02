@@ -75,7 +75,7 @@ def menu_principal():
             print("Opción no válida. Intente nuevamente.")
 
 def menu_usuarios_accesos(usuarios, usuarios_ordenados):
-    """Submenu for user and access management."""
+    """Para administración de usuarios y accesos"""
     print("\n--- Usuarios y Accesos de la Aplicación ---")
     print("1. Acceder al CRUD de los Usuarios en POO")
     print("2. Mostrar los datos de Accesos")
@@ -96,7 +96,7 @@ def menu_usuarios_accesos(usuarios, usuarios_ordenados):
         print("Opción no válida.")
 
 def crud_usuarios(usuarios):
-    """CRUD operations submenu."""
+    """menú para el CRUD"""
     print("\n--- CRUD de los Usuarios ---")
     print("1. Agregar un nuevo usuario")
     print("2. Modificar un usuario")
@@ -117,7 +117,7 @@ def crud_usuarios(usuarios):
         print("Opción no válida.")
 
 def mostrar_datos_accesos():
-    """Shows access and failed login attempts."""
+    """Muestra los accesos e intentos fallidos."""
     print("\n--- Mostrar los datos de Accesos ---")
     print("1. Mostrar los Accesos (datos de accesos.ispc)")
     print("2. Mostrar los logs de intentos fallidos (datos de logs.txt)")
@@ -135,7 +135,7 @@ def mostrar_datos_accesos():
         print("Opción no válida.")
 
 def menu_ordenar_buscar_usuarios(usuarios, usuarios_ordenados):
-    """Menu for user sorting and searching options."""
+    """Menú de ordenamiento"""
     print("\n--- Ordenamiento y Búsqueda de Usuarios ---")
     print("1. Ordenar los Usuarios")
     print("2. Buscar y Mostrar los Usuarios")
